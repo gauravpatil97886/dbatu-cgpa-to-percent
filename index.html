@@ -133,6 +133,26 @@
             0% { transform: translateY(0); opacity: 1; }
             100% { transform: translateY(-100px); opacity: 0; }
         }
+
+         .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 1.5rem;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    /* Animation for image popup */
+    .image-container.active {
+        display: block;
+        animation: popup-fade 0.5s ease-in-out;
+    }
+
+    @keyframes popup-fade {
+        0% { opacity: 0; transform: scale(0.8); }
+        100% { opacity: 1; transform: scale(1); }
+    }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <title>Futuristic CGPA & GPA Converter</title>
@@ -168,10 +188,11 @@
                 <p style="margin-top: 10px;">Right-click on the image and select "Save Image As" to download.</p>
             </div>
         </div> -->
-        <div class="image-container" id="imageContainer" style="display: none;">
-            <img src="dbatu-cgpa-to-percent.jpg" alt="Image" id="popupImage" style="max-width: 100%; border-radius: 10px;">
-        </div>
-        <button id="imageButton" onclick="showImage()">Show Image for 5 Seconds</button>
+        <div class="image-container" id="imageContainer">
+        <span class="close-button" onclick="hideImage()">&times;</span>
+        <img src="your-image.jpg" alt="Image" id="popupImage" style="max-width: 100%; border-radius: 10px;">
+    </div>
+    <button id="imageButton" onclick="showImage()">Show Image for 5 Seconds</button>
     </div>
     
     <script>
@@ -201,19 +222,23 @@
             const headerBox = document.getElementById('headerBox');
             headerBox.style.display = 'none';
         }, 5000);
-         let imagePopupTimeout;
+             let imagePopupTimeout;
 
-        function showImage() {
-            const imageContainer = document.getElementById('imageContainer');
-            const popupImage = document.getElementById('popupImage');
-            
-            imageContainer.style.display = 'block';
-            clearTimeout(imagePopupTimeout);
-            
-            imagePopupTimeout = setTimeout(() => {
-                imageContainer.style.display = 'none';
-            }, 5000);
-        }
+    function showImage() {
+        const imageContainer = document.getElementById('imageContainer');
+        imageContainer.classList.add('active');
+        clearTimeout(imagePopupTimeout);
+
+        imagePopupTimeout = setTimeout(() => {
+            hideImage();
+        }, 5000);
+    }
+
+    function hideImage() {
+        const imageContainer = document.getElementById('imageContainer');
+        imageContainer.classList.remove('active');
+    }
+
 
     </script>
     <div class="footer">
