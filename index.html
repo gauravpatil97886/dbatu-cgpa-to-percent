@@ -150,24 +150,28 @@
         <h1 class="university-name"><a href="https://dbatu.ac.in/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: #00b3e6;">Dr.Babasaheb Ambedkar Technological University</a></h1>
         
         <div class="calculator">
-            <h2>Futuristic CGPA to Percentage Conversion</h2>
+            <h2> CGPA to Percentage Conversion</h2>
             <input type="number" id="cgpaInput" placeholder="Enter CGPA">
             <button onclick="convertCGPA()">Convert</button>
             <div class="output-box" id="cgpaResult"></div>
             
-            <h2>Futuristic GPA to Percentage Conversion</h2>
+            <h2> GPA to Percentage Conversion</h2>
             <input type="number" id="gpaInput" placeholder="Enter GPA">
             <button onclick="convertGPA()">Convert</button>
             <div class="output-box" id="gpaResult"></div>
         </div>
         
-        <div class="rules-button-container">
+<!--         <div class="rules-button-container">
             <button id="rulesButton" onmouseenter="showRules()" style="font-size: 1.2rem;">Rules of Converting CGPA to Percentage</button>
             <div class="rules-popup" id="rulesPopup">
                 <img src="dbatu-cgpa-to-percent.jpg" alt="Conversion Rules" style="max-width: 100%; border-radius: 10px;">
                 <p style="margin-top: 10px;">Right-click on the image and select "Save Image As" to download.</p>
             </div>
+        </div> -->
+        <div class="image-container" id="imageContainer" style="display: none;">
+            <img src="dbatu-cgpa-to-percent.jpg" alt="Image" id="popupImage" style="max-width: 100%; border-radius: 10px;">
         </div>
+        <button id="imageButton" onclick="showImage()">Show Image for 5 Seconds</button>
     </div>
     
     <script>
@@ -197,6 +201,19 @@
             const headerBox = document.getElementById('headerBox');
             headerBox.style.display = 'none';
         }, 5000);
+         let imagePopupTimeout;
+
+        function showImage() {
+            const imageContainer = document.getElementById('imageContainer');
+            const popupImage = document.getElementById('popupImage');
+            
+            imageContainer.style.display = 'block';
+            clearTimeout(imagePopupTimeout);
+            
+            imagePopupTimeout = setTimeout(() => {
+                imageContainer.style.display = 'none';
+            }, 5000);
+        }
 
     </script>
     <div class="footer">
