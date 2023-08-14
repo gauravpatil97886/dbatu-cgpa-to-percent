@@ -73,25 +73,6 @@
             animation: name-fade 1.5s ease-in-out;
         }
 
-        .rules-button-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .rules-popup.active {
-            display: block;
-            animation: popup-fade 0.5s ease-in-out;
-        }
-
-        @keyframes name-fade {
-            0% { opacity: 0; transform: translateY(-20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes popup-fade {
-            0% { opacity: 0; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1); }
-        }
         .footer {
             background-color: #1f1f1f;
             padding: 10px;
@@ -101,15 +82,23 @@
             bottom: 0;
             width: 100%;
             text-align: center;
-            animation: footer-slide 1s ease-in-out;
+            animation: footer-slide 1s ease-in-out, fade-in 1s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+        
 
         @keyframes footer-slide {
             0% { transform: translateY(100px); opacity: 0; }
             100% { transform: translateY(0); opacity: 1; }
         }
 
-        /* Header explanation box with animation */
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .header-box {
             background-color: #1f1f1f;
             border: 1px solid #555555;
@@ -119,7 +108,6 @@
             animation: box-slide 1s ease-in-out;
         }
 
-        /* Closing animation for header box */
         .header-box.hide {
             animation: box-hide 1s ease-in-out;
         }
@@ -134,67 +122,126 @@
             100% { transform: translateY(-100px); opacity: 0; }
         }
 
-         .close-button {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 1.5rem;
-        color: #fff;
-        cursor: pointer;
-    }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+        }
 
-    /* Animation for image popup */
-    .image-container.active {
-        display: block;
-        animation: popup-fade 0.5s ease-in-out;
-    }
+        .image-container.active {
+            display: block;
+            animation: popup-fade 0.5s ease-in-out;
+        }
 
-    @keyframes popup-fade {
-        0% { opacity: 0; transform: scale(0.8); }
-        100% { opacity: 1; transform: scale(1); }
-    }
+        @keyframes popup-fade {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .rules-button {
+            background-color: #ff9933;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .rules-button:hover {
+            background-color: #ff6600;
+        }
+
+        /* Styling for the rules modal */
+        .rules-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .rules-content {
+            background-color: #fff;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: #555;
+            cursor: pointer;
+        }
+        .view-counter {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #00b3e6;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    animation: slideIn 1s ease-in-out;
+}
+
+@keyframes slideIn {
+    0% { transform: translateX(100px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+.popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: popup-fade 0.5s ease-in-out;
+            position: relative;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+            color: #333;
+            cursor: pointer;
+        }
+        .popup-content p {
+            color: #333;
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <title>Futuristic CGPA & GPA Converter</title>
-</head>
-<body>
-    
-</div>
-    <div class="container">
-        <div class="header-box" id="headerBox">
-            <h2>Why This Website?</h2>
-            <p>
-                This website is designed to provide a user-friendly interface for converting CGPA and GPA to percentage. Our mission is to simplify complex calculations and help students understand their academic performance better.
-            </p>
-        </div>
-        <h1 class="university-name"><a href="https://dbatu.ac.in/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: #00b3e6;">Dr.Babasaheb Ambedkar Technological University</a></h1>
-        
-        <div class="calculator">
-            <h2> CGPA to Percentage Conversion</h2>
-            <input type="number" id="cgpaInput" placeholder="Enter CGPA">
-            <button onclick="convertCGPA()">Convert</button>
-            <div class="output-box" id="cgpaResult"></div>
-            
-            <h2> GPA to Percentage Conversion</h2>
-            <input type="number" id="gpaInput" placeholder="Enter GPA">
-            <button onclick="convertGPA()">Convert</button>
-            <div class="output-box" id="gpaResult"></div>
-        </div>
-        
-<!--         <div class="rules-button-container">
-            <button id="rulesButton" onmouseenter="showRules()" style="font-size: 1.2rem;">Rules of Converting CGPA to Percentage</button>
-            <div class="rules-popup" id="rulesPopup">
-                <img src="dbatu-cgpa-to-percent.jpg" alt="Conversion Rules" style="max-width: 100%; border-radius: 10px;">
-                <p style="margin-top: 10px;">Right-click on the image and select "Save Image As" to download.</p>
-            </div>
-        </div> -->
-        <div class="image-container" id="imageContainer">
-        <span class="close-button" onclick="hideImage()">&times;</span>
-        <img src="your-image.jpg" alt="Image" id="popupImage" style="max-width: 100%; border-radius: 10px;">
-    </div>
-    <button id="imageButton" onclick="showImage()">Show Image for 5 Seconds</button>
-    </div>
-    
     <script>
         function convertCGPA() {
             const cgpaInput = parseFloat(document.getElementById('cgpaInput').value);
@@ -218,31 +265,128 @@
                 rulesPopup.classList.remove('active');
             }, 5000);
         }
+
         setTimeout(() => {
             const headerBox = document.getElementById('headerBox');
             headerBox.style.display = 'none';
         }, 5000);
-             let imagePopupTimeout;
 
-    function showImage() {
-        const imageContainer = document.getElementById('imageContainer');
-        imageContainer.classList.add('active');
-        clearTimeout(imagePopupTimeout);
+        let imagePopupTimeout;
 
-        imagePopupTimeout = setTimeout(() => {
-            hideImage();
-        }, 5000);
-    }
+        function showImage() {
+            const imageContainer = document.getElementById('imageContainer');
+            imageContainer.classList.add('active');
+            clearTimeout(imagePopupTimeout);
 
-    function hideImage() {
-        const imageContainer = document.getElementById('imageContainer');
-        imageContainer.classList.remove('active');
-    }
+            imagePopupTimeout = setTimeout(() => {
+                hideImage();
+            }, 10000);
+        }
 
+        function hideImage() {
+            const imageContainer = document.getElementById('imageContainer');
+            imageContainer.classList.remove('active');
+        }
 
+        function saveImage() {
+            const popupImage = document.getElementById('popupImage');
+            
+            // Check if the image source is valid
+            if (!popupImage || !popupImage.src) {
+                console.error("Image source not found or invalid.");
+                return;
+            }
+
+            // Create a temporary link element for download
+            const link = document.createElement('a');
+            link.href = popupImage.src;
+            link.download = 'your-image.jpg';
+            link.style.display = 'none';
+            
+            // Append the link to the document
+            document.body.appendChild(link);
+
+            // Trigger the click event on the link to initiate download
+            link.click();
+
+            // Clean up: remove the link element
+            document.body.removeChild(link);
+        }
+        function showRulesModal() {
+            const rulesModal = document.getElementById('rulesModal');
+            rulesModal.style.display = 'block';
+        }
+
+        function hideRulesModal() {
+            const rulesModal = document.getElementById('rulesModal');
+            rulesModal.style.display = 'none';
+        }
+        function showPopup() {
+            const popupOverlay = document.getElementById('popupOverlay');
+            popupOverlay.style.display = 'flex';
+            setTimeout(() => {
+                closePopup();
+            }, 5000); // 5 seconds
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            const popupOverlay = document.getElementById('popupOverlay');
+            popupOverlay.style.display = 'none';
+        }
     </script>
-    <div class="footer">
-        &copy; 2023 Your Name. All rights reserved.
+</head>
+<body>
+
+    <!-- Popup Overlay -->
+    <button onclick="showPopup()">click please </button>
+
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-content">
+            <span class="popup-close" onclick="closePopup()">&times;</span>
+            <p>Hey everyone,
+
+                I'm Gaurav, and I've built a CGPA to Percentage Calculator website to tackle the conversion challenges we face during job applications. Whether it's placements or government roles, this tool follows DBATU CGPA conversion rules to make your life easier. Check it out and simplify your career journey!</p>
+        </div>
     </div>
+    <div class="container">
+        <h1 class="university-name"><a href="https://dbatu.ac.in/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: #00b3e6;">Dr.Babasaheb Ambedkar Technological University</a></h1>
+        
+        <div class="calculator">
+            <h2> CGPA to Percentage Conversion</h2>
+            <input type="number" id="cgpaInput" placeholder="Enter CGPA">
+            <button onclick="convertCGPA()">Convert</button>
+            <div class="output-box" id="cgpaResult"></div>
+            
+            <h2> GPA to Percentage Conversion</h2>
+            <input type="number" id="gpaInput" placeholder="Enter GPA">
+            <button onclick="convertGPA()">Convert</button>
+            <div class="output-box" id="gpaResult"></div>
+        </div>
+        
+        <div class="rules-button-container">
+            <button class="rules-button" onclick="showRulesModal()">RULES OF DBATU CGPA TO Percentage</button>
+            <div class="rules-modal" id="rulesModal">
+                <div class="rules-content">
+                    <span class="close-modal" onclick="hideRulesModal()">&times;</span>
+                    <img src="dbatu-cgpa-to-percent.jpg" alt="Conversion Rules" style="max-width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px;">Right-click on the image and select "Save Image As" to download.</p>
+                </div>
+            </div>
+            
+            <div class="footer">
+                &copy; 2023 Gaurav Patil All rights reserved.
+            </div>
+            </div>
+            
+            <div class="view-counter">
+                <a href="http://www.freevisitorcounters.com" target="_blank" rel="noopener noreferrer">View Counter</a>
+                <script type="text/javascript" src="https://www.freevisitorcounters.com/auth.php?id=f4af3293409408b4efc2890650985e92d94871be"></script>
+                <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1062640/t/5"></script>
+            </div>
+            
+    
+    
 </body>
 </html>
