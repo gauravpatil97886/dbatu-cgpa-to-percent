@@ -14,7 +14,7 @@ Welcome to the DBATU CGPA to Percentage and GPA to Percentage Converter! This we
 
 ## Usage
 
-1. Visit the live website of the converter at [https://yourusername.github.io/dbatu-cgpa-gpa-converter](https://yourusername.github.io/dbatu-cgpa-gpa-converter).
+1. Visit the live website of the converter at [https://gauravpatil97886.github.io/dbatu-cgpa-to-percent/).
 2. Enter your CGPA or GPA value in the input field.
 3. Click the "Convert" button to see the equivalent percentage.
 
